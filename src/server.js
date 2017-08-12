@@ -27,7 +27,8 @@ server.post('/posts', (req, res) => {
   let postsLastPostIndex = posts.length -1;
   if (postsLastPostIndex < 0)  { // nothing in the array set id to one
     id = 1;
-  } else {  // we're finding the id of the last array index and adding one to it
+  } else {  // we're finding the id of the last array index and adding one to it so that we have unique
+            //id's
     id = (posts[postsLastPostIndex].id) + 1;
   }
   console.log('postid ' + id);
@@ -62,7 +63,7 @@ server.delete('/posts', (req, res) => {
     return;
   }
   posts.splice((index), 1);
-  res.send({ posts });
+  console.log({ posts });
   res.send({ sucess: true });
   idExists = false; //reset ths checking in future
 });
