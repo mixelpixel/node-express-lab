@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "LambdaSchool Node.js and Express",
   "scripts": {
-    "test": "eslint tests/*.js && eslint src/*.js && mocha -R nyan tests",
-    "test:watch": "npm test -- --watch"
+    "test": "mocha -R nyan tests",
+    "watch": "npm test -- --watch"
   },
   "license": "ISC",
   "dependencies": {
