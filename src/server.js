@@ -16,13 +16,21 @@ server.use(bodyParser.json());
 server.post('/posts', (req, res) => {
   const title = req.body.title;
   const contents = req.body.contents;
-  const id = posts.length + 1;
+  let id = -1;
   if (!title || !contents) {
     res.status(STATUS_USER_ERROR);
     res.json({ err: 'Must provide a title and content' });
     return;
   }
+  //console.log(posts[posts.length].id + 1);
   console.log(title, contents);
+  let postsLastPostIndex = posts.length -1;
+  if (postsLastPostIndex < 0)  { // nothing in the array set id to one
+    id = 1;
+  } else {  // we're finding the id of the last array index and adding one to it
+    id = (posts[postsLastPostIndex].id) + 1;
+  }
+  console.log('postid ' + id);
   post = { id, title, contents };
   posts.push(post);
   res.send({ posts });
@@ -55,8 +63,7 @@ server.delete('/posts', (req, res) => {
   }
   posts.splice((index), 1);
   res.send({ posts });
-  //res.send({ sucess: true });
-  delPostid = '';  // clear it so if another del request is sent , we check the newly sent id
+  res.send({ sucess: true });
   idExists = false; //reset ths checking in future
 });
 
