@@ -14,7 +14,9 @@ const server = express();
 // to enable parsing of json bodies for post requests
 server.use(bodyParser.json());
 
+
 // TODO: your code to handle requests
+
 
 /* DUMMY PAGES ************************************************************* */
 // GET req.query
@@ -29,13 +31,13 @@ server.get('/hello', (req, res) => {
   }
   res.send(`<h1>Hello, ${name}!</h1>`);
 });
-// GET req.params
+// GET req.params // <~~~~~~~~~~~~~~~~~~~~~~~~~ params
 server.get('/word/:word', (req, res) => {
   // http://localhost:3001/word/pizza
   const word = req.params.word;
   // if (!word) {
   //   res.status(STATUS_USER_ERROR); // <-- No WORD, JUST throws a 404
-  //   res.json({ error: 'Please provide a word!' });
+  //   res.json({ error: 'Please provide a word like, "pizza" http://localhost:3001/word/pizza!' });
   //   return;
   // }
   res.send(`<h1>The MOST AWESOMEST WORD ever is, "${word}"!</h1>`);

@@ -14,6 +14,18 @@ const server = express();
 // to enable parsing of json bodies for post requests
 server.use(bodyParser.json());
 
+// server.get('/word/:word', (req, res) => {
+//   // http://localhost:3001/word/pizza
+//   const word = req.params.word;
+//   // if (!word) {
+//   //   res.status(STATUS_USER_ERROR); // <-- No WORD, JUST throws a 404
+//   //   res.json({ error: 'Please provide a word!' });
+//   //   return;
+//   // }
+//   res.send(`<h1>The MOST AWESOMEST WORD ever is, "${word}"!</h1>`);
+//   return;
+// });
+
 // READ
 server.get('/posts', (req, res) => {
   const term = req.query.term;
@@ -92,7 +104,7 @@ server.put('/posts', (req, res) => {
   }
   // console.log('after the for loop');
   res.status(STATUS_USER_ERROR);
-  res.json({ error: 'That id is not in the array.' });
+  res.json({ error: 'That ID is not in the array.' });
   return;
 });
 
